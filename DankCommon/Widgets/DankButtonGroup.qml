@@ -216,6 +216,7 @@ Row {
                         id: checkIcon
                         name: "check"
                         size: root.checkIconSize
+                        smoothTransform: true
                         color: segment.selected ? Style.buttonText : Style.surfaceVariantText
                         visible: root.checkEnabled && segment.selected
                         opacity: segment.selected ? 1 : 0
