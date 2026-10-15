@@ -120,10 +120,10 @@ Row {
             border.color: "transparent"
             border.width: 0
 
-            topLeftRadius: (visualFirst || selected) ? Style.cornerRadius : Math.min(4, Style.cornerRadius)
-            bottomLeftRadius: (visualFirst || selected) ? Style.cornerRadius : Math.min(4, Style.cornerRadius)
-            topRightRadius: (visualLast || selected) ? Style.cornerRadius : Math.min(4, Style.cornerRadius)
-            bottomRightRadius: (visualLast || selected) ? Style.cornerRadius : Math.min(4, Style.cornerRadius)
+            topLeftRadius: Style.cornerRadius
+            bottomLeftRadius: Style.cornerRadius
+            topRightRadius: Style.cornerRadius
+            bottomRightRadius: Style.cornerRadius
 
             Behavior on width {
                 enabled: root.userInteracted
