@@ -157,8 +157,9 @@ Row {
             property bool visualLast: index === repeater.count - 1
             property bool prevSelected: index > 0 ? root.isSelected(index - 1) : false
             property bool nextSelected: index < repeater.count - 1 ? root.isSelected(index + 1) : false
-            readonly property real leftRadius: visualFirst ? root.outerRadius : (pressed ? root.pressedInnerRadius : (selected ? root.outerRadius : root.innerRadius))
-            readonly property real rightRadius: visualLast ? root.outerRadius : (pressed ? root.pressedInnerRadius : (selected ? root.outerRadius : root.innerRadius))
+            // local: every segment fully rounded, not just the outer ends and the selection
+            readonly property real leftRadius: root.outerRadius
+            readonly property real rightRadius: root.outerRadius
             readonly property color contentColor: !root.enabled ? Style.onSurface_38 : (selected ? root.selectedContentColor : root.unselectedContentColor)
 
             readonly property real contentNaturalWidth: (checkIcon.visible ? checkIcon.width + contentRow.spacing : 0) + (optionIcon.visible ? optionIcon.width + (buttonText.visible ? contentRow.spacing : 0) : 0) + (buttonText.visible ? buttonText.implicitWidth : 0)
@@ -251,6 +252,7 @@ Row {
                     DIcon {
                         id: checkIcon
                         name: "check"
+                        smoothTransform: true
                         size: root.checkIconSize
                         color: segment.contentColor
                         visible: root.checkEnabled && !root.iconOnly && segment.selected
